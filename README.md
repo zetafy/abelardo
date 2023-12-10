@@ -11,4 +11,4 @@ To get started with Abelardo, type `/review` in any channel where the bot is pre
 
 ---
 
-The name ***Abelardo*** was taken after ELEC1601's course designer and former professor, ***Abelardo Pardo***.
+The name ***Abelardo*** was taken after ***Abelardo Pardo***, ELEC1601's course designer and former professor at USYD.
