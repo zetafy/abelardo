@@ -4,7 +4,7 @@
 
 ## Using the bot
 
-To get started with Abelardo, type `/review` in any channel where the bot is present. This command will prompt Abelardo to display an embedded message with which you can select a topic for review by clicking on the dropdown menu. Once a topic is chosen, you can ask Abelardo to generate as many questions about the topic as you like.
+To get started with ***Abelardo***, type **`/review`** in any channel where the bot is present. This command will prompt ***Abelardo*** to display an embedded message with which you can select a topic for review by clicking on the dropdown menu. Once a topic is chosen, you can ask ***Abelardo*** to generate as many questions about the topic as you like.
 
 <img src="https://github.com/zetafy/abelardo/assets/108279046/dccb76c1-aac6-4b9f-93eb-c56bfe737c16" alt="review" width="50%"> 
 
