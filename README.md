@@ -8,6 +8,27 @@ To get started with ***Abelardo***, type **`/review`** in any channel where the 
 
 <img src="https://github.com/zetafy/abelardo/assets/108279046/dccb76c1-aac6-4b9f-93eb-c56bfe737c16" alt="review" width="50%"> 
 
+## Contributors
+
+<table>
+  <tr>
+      <td align="center">
+          <a href="https://github.com/abyanmajid">
+              <img src="https://avatars.githubusercontent.com/u/108279046?v=4" width="50" alt="Abyan Majid" class="rounded-img"/>
+              <br />
+              <sub><b>Abyan Majid</b></sub>
+          </a>
+      </td>
+      <td align="center">
+          <a href="https://github.com/IceyVision">
+              <img src="https://avatars.githubusercontent.com/u/71762059?v=4" width="50" alt="IceyVision" class="rounded-img"/>
+              <br />
+              <sub><b>IceyVision</b></sub>
+          </a>
+      </td>
+  </tr>
+</table>
+
 
 ---
 
