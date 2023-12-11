@@ -20,6 +20,9 @@ async def setup(bot):
 # -------------------------------- Questions --------------------------------
 
 def base_encoding_question():
+    """
+    Base encoding question generator
+    """
     bases = [2, 8, 10, 16]
     from_base, to_base = 0, 0
 

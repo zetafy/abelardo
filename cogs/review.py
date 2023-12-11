@@ -4,6 +4,7 @@ from discord.ext import commands
 from settings import GUILD_ID
 from .data import TOPICS
 from .base_encoding import BaseEncoding
+from .memory_size import MemorySize
 
 class Review(commands.Cog):
     def __init__(self, bot: commands.Bot):
@@ -42,33 +43,15 @@ class Review(commands.Cog):
                 embed = topic.generate_embed()
                 view = topic.generate_view()
             
-            # Fixed-point numbers callback
+            # Fixed point callback
             elif chosen_topic == TOPICS[1]:
-                pass
-                
-            # Floating-point numbers callback
-            elif chosen_topic == TOPICS[2]:
                 pass
             
             # Memory size callback
-            elif chosen_topic == TOPICS[3]:
-                pass
-            
-            # Stack, read, write callback
-            elif chosen_topic == TOPICS[4]:
-                pass
-            
-            # Latches and flip-flops callback
-            elif chosen_topic == TOPICS[5]:
-                pass
-            
-            # Polling and interrupt callback
-            elif chosen_topic == TOPICS[6]:
-                pass
-            
-            # Registers callback
-            elif chosen_topic == TOPICS[7]:
-                pass
+            elif chosen_topic == TOPICS[2]:
+                topic = MemorySize(review_callback=review_callback)
+                embed = topic.generate_embed()
+                view = topic.generate_view()
             
             else:
                 print("[!] Topic Not Found!")

@@ -21,10 +21,5 @@ async def setup(bot):
 TOPICS = [
     "Base encoding", # Generator
     "Fixed-point numbers", # Generator
-    "Floating-point numbers", # Fetch from database (just define data in a python file)
     "Memory size", # Generator
-    "Stack, Read, Write", # Fetch from database (just define data in a python file) 
-    "Latches and Flip-flops", # Fetch from database (just define data in a python file) 
-    "Polling and Interrupt", # Fetch from database (just define data in a python file) 
-    "Registers", # Fetch from database (just define data in a python file)
 ]
