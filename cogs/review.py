@@ -5,6 +5,7 @@ from settings import GUILD_ID
 from .data import TOPICS
 from .base_encoding import BaseEncoding
 from .memory_size import MemorySize
+from .fixed_point import FixedPoint
 
 class Review(commands.Cog):
     def __init__(self, bot: commands.Bot):
@@ -40,22 +41,21 @@ class Review(commands.Cog):
             # Base encoding callback
             if chosen_topic == TOPICS[0]:
                 topic = BaseEncoding(review_callback=review_callback)
-                embed = topic.generate_embed()
-                view = topic.generate_view()
             
             # Fixed point callback
             elif chosen_topic == TOPICS[1]:
-                pass
+                topic = FixedPoint(review_callback=review_callback)
             
             # Memory size callback
             elif chosen_topic == TOPICS[2]:
                 topic = MemorySize(review_callback=review_callback)
-                embed = topic.generate_embed()
-                view = topic.generate_view()
             
             else:
                 print("[!] Topic Not Found!")
-                await interaction.response.send_message("[!] Topic Not Found!")
+                await interaction.response.send_message("[!] Topic Not Found!", ephemeral = True)
+                
+            embed = topic.generate_embed()
+            view = topic.generate_view()
                 
             await interaction.response.edit_message(embed = embed, view = view)
             

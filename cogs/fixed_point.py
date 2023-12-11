@@ -2,22 +2,22 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 from settings import GUILD_ID
-from .memory_size_questions import total_size_question, cell_size_question, no_of_cells_question, address_bits_question
+from .fixed_point_questions import fixed_to_dec_question, dec_to_fixed_question
 import random
 
 # -------------------------------- ModuleNotFoundError Handler --------------------------------
 
-class MemorySizeErrorHandler(commands.Cog):
+class FixedPointErrorHandler(commands.Cog):
     
     def __init__(self, bot: commands.Bot):
         self.bot = bot
         
     @commands.Cog.listener()
     async def on_ready(self):
-        print("(COG Loaded): memory_size.py")
+        print("(COG Loaded): fixed_point.py")
         
 async def setup(bot):
-    await bot.add_cog(MemorySizeErrorHandler(bot), guilds=[discord.Object(id=GUILD_ID)])
+    await bot.add_cog(FixedPointErrorHandler(bot), guilds=[discord.Object(id=GUILD_ID)])
     
 # -------------------------------- review/Memory Size UI --------------------------------
 
@@ -33,35 +33,49 @@ class AnswerModal(discord.ui.Modal, title="Submission"):
     async def on_submit(self, interaction: discord.Interaction):
         user_input = self.answer.value
         correct_answer = self.question_instance.correct_answer
-        if str(user_input) == str(correct_answer):
-            title = "You Got It!"
-            msg = f"You answered: {user_input}\n\nThat is correct!"
-            msg += "\n\nClick 'Reveal Correct Answer' to verify!"
-            color = discord.Colour.green()
+        type_of_question = self.question_instance.type_of_question
+        if type_of_question == 1:
+            if str(user_input) == str(correct_answer):
+                title = "You Got It!"
+                msg = f"You answered: {user_input}\n\nThat is correct!"
+                msg += "\n\nClick 'Reveal Correct Answer' to verify!"
+                color = discord.Colour.green()
+            else:
+                title = "Not Quite!"
+                msg = f"You answered: {user_input}\n\nUnfortunately, that is incorrect!"
+                msg += "\n\nClick 'Reveal Correct Answer' to view the correct answer!"
+                color = discord.Colour.red()
         else:
-            title = "Not Quite!"
-            msg = f"You answered: {user_input}\n\nUnfortunately, that is incorrect!"
-            msg += "\n\nClick 'Reveal Correct Answer' to view the correct answer!"
-            color = discord.Colour.red()
+            if str(user_input) in [correct_answer, correct_answer[2:]]:
+                title = "You Got It!"
+                msg = f"You answered: {user_input}\n\nThat is correct!"
+                msg += "\n\nClick 'Reveal Correct Answer' to verify!"
+                color = discord.Colour.green()
+            else:
+                title = "Not Quite!"
+                msg = f"You answered: {user_input}\n\nUnfortunately, that is incorrect!"
+                msg += "\n\nClick 'Reveal Correct Answer' to view the correct answer!"
+                color = discord.Colour.red()
             
         embed = discord.Embed(title=title, description=msg, color=color)
         await interaction.response.send_message(embed = embed, ephemeral=True)
 
-class MemorySize():
+class FixedPoint():
 
     def __init__(self, review_callback):
         self.review_callback = review_callback
-        self.title = "Memory Size"
+        self.title = "Fixed-Point Numbers"
         self.color = discord.Colour.dark_orange()
         self.description = "Click 'Generate Question' to get started!"
         self.embed = None
         self.view = None
         self.correct_answer = None
         self.fields = 0
+        self.type_of_question = None
         
     def generate_embed(self):
         """
-        Generate an `Embed` object for the UI of `/review/Memory Size`
+        Generate an `Embed` object for the UI of `/review/Fixed-Point Numbers`
         """
         embed = discord.Embed(title=self.title, description=self.description, color=self.color)
         
@@ -69,7 +83,7 @@ class MemorySize():
         
     def generate_view(self):
         """
-        Generate a `View` object (consisting of buttons) for the UI of `/review/Memory Size`
+        Generate a `View` object (consisting of buttons) for the UI of `/review/Fixed-Point Numbers`
         """
         view = discord.ui.View()
 
@@ -88,18 +102,15 @@ class MemorySize():
     
     async def generate_question(self, interaction):
         """
-        Generate a random memory size question
+        Generate a random fixed-point numbers question
         """
-        type_of_question = random.randint(1, 4)
+        type_of_question = random.randint(1, 2)
+        self.type_of_question = type_of_question
         
         if type_of_question == 1:
-            question, correct_answer = total_size_question()
+            question, correct_answer = fixed_to_dec_question()
         elif type_of_question == 2:
-            question, correct_answer = cell_size_question()
-        elif type_of_question == 3:
-            question, correct_answer = no_of_cells_question()
-        elif type_of_question == 4:
-            question, correct_answer = address_bits_question()
+            question, correct_answer = dec_to_fixed_question()
         else:
             print("ERROR: Invalid question type!")
             

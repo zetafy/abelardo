@@ -62,9 +62,9 @@ class BaseEncoding():
         """
         Generate an `Embed` object for the UI of `/review/Base Encoding`
         """
-        market_embed = discord.Embed(title=self.title, description=self.description, color=self.color)
+        embed = discord.Embed(title=self.title, description=self.description, color=self.color)
         
-        return market_embed
+        return embed
         
     def generate_view(self):
         """
