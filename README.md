@@ -16,14 +16,14 @@ To get started with ***Abelardo***, type **`/review`** in any channel where the 
           <a href="https://github.com/abyanmajid">
               <img src="https://avatars.githubusercontent.com/u/108279046?v=4" width="50" alt="Abyan Majid" class="rounded-img"/>
               <br />
-              <sub><b>Abyan Majid</b></sub>
+              <sub><b>abyanmajid</b></sub>
           </a>
       </td>
       <td align="center">
           <a href="https://github.com/IceyVision">
               <img src="https://avatars.githubusercontent.com/u/71762059?v=4" width="50" alt="IceyVision" class="rounded-img"/>
               <br />
-              <sub><b>IceyVision</b></sub>
+              <sub><b>iceyvision</b></sub>
           </a>
       </td>
   </tr>
